@@ -6,6 +6,7 @@ import {SelectComponent} from './SelectComponent';
 import {CheckboxComponent} from './CheckboxComponent';
 import {OptionComponent} from './OptionComponent';
 import {InputFileComponent} from './InputFileComponent';
+import {ButtonComponent} from './ButtonComponent';
 
 function App() {
   return (
@@ -151,7 +152,9 @@ function App() {
               message=""
             />
           </div>
-          <button className='primary-button'>Submit</button>
+          <ButtonComponent
+              buttonText="Submit"
+          />
         </form>
       </main>
     </div>

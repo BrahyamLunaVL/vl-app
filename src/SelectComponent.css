@@ -1,0 +1,83 @@
+.select-container{
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+.select-container label{
+    color: var(--secondary);
+    font-size: 13px;
+    font-weight: 400;
+}
+.select-dropdown{
+    display: flex;
+    position: relative;
+}
+.form-select{
+    appearance: none;
+    background-color: var(--white);
+    width: 100%;
+    padding: 10px 16px;
+    display: flex;
+    gap: 8px;
+    font-size: 16px;
+    border: solid 1px var(--gray);
+    border-radius: 8px;
+    outline: none;
+    transition: .2s;
+}
+.form-select:focus{
+    border: solid 1px var(--primary);
+    transition: .2s;
+}
+.select-container.error .form-select{
+    border: solid 1px var(--red);
+}
+.select-container.good .form-select{
+    border: solid 1px var(--green);
+}
+.select-icon{
+    position: absolute;
+    top: 50%;
+    right: 16px;
+    transform: translateY(-50%);
+    color: var(--gray);
+    pointer-events: none;
+}
+.form-select option{
+    display: flex;
+    color: var(--secondary);
+    font-size: 13px;
+}
+.select-messages{
+    display: none;
+    align-items: center;
+    gap: 8px;
+}
+.select-container.message .select-messages, .select-container.error .select-messages, .select-container.good .select-messages{
+    display: flex;
+}
+.select-container .select-messages i, .select-container .select-messages p{
+    font-size: 12px;
+}
+.select-container.error .select-messages i{
+    color: var(--red);
+}
+.select-container.message .select-messages i ,.select-container.error .select-messages i.check{
+    display: none;
+}
+.select-container.good .select-messages i{
+    color: var(--green);
+}
+.select-container.message .select-messages i ,.select-container.good .select-messages i.alert{
+    display: none;
+}
+.select-container.message .select-messages p{
+    color: var(--gray-2);
+}
+.select-container.error .select-messages p{
+    color: var(--red);
+}
+.select-container.good .select-messages p{
+    color: var(--green);
+}

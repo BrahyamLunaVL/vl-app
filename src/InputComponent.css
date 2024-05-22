@@ -1,0 +1,65 @@
+.input-container{
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+.input-container label{
+    color: var(--secondary);
+    font-size: 13px;
+    font-weight: 400;
+}
+.form-input{
+    background-color: var(--white);
+    width: 100%;
+    padding: 10px 16px;
+    display: flex;
+    gap: 8px;
+    font-size: 16px;
+    border: solid 1px var(--gray);
+    border-radius: 8px;
+    outline: none;
+    transition: .2s;
+}
+.form-input:focus{
+    border: solid 1px var(--primary);
+    transition: .2s;
+}
+.input-container.error .form-input{
+    border: solid 1px var(--red);
+}
+.input-container.good .form-input{
+    border: solid 1px var(--green);
+}
+.input-messages{
+    display: none;
+    align-items: center;
+    gap: 8px;
+}
+.input-container.message .input-messages, .input-container.error .input-messages, .input-container.good .input-messages{
+    display: flex;
+}
+.input-messages i, .input-messages p{
+    font-size: 12px;
+}
+.input-container.error .input-messages i{
+    color: var(--red);
+}
+.input-container.message .input-messages i ,.input-container.error .input-messages i.check{
+    display: none;
+}
+.input-container.good .input-messages i{
+    color: var(--green);
+}
+.input-container.message .input-messages i ,.input-container.good .input-messages i.alert{
+    display: none;
+}
+.input-container.message .input-messages p{
+    color: var(--gray-2);
+}
+.input-container.error .input-messages p{
+    color: var(--red);
+}
+.input-container.good .input-messages p{
+    color: var(--green);
+}

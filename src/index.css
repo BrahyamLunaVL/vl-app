@@ -7,10 +7,7 @@
 :root{
   --white: #FFFFFF;
   --gray: #BBBBBB;
-<<<<<<< HEAD
-=======
   --gray-2: #8A8A8A;
->>>>>>> master
   --primary: #C32059;
   --secondary: #263238;
   --red: #DE1515;
@@ -23,85 +20,12 @@ body {
     sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-<<<<<<< HEAD
-}
-
-=======
   overflow-y: hidden;
 }
->>>>>>> master
 code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
 }
-<<<<<<< HEAD
-
-main{
-  padding: 50px;
-  display: flex;
-  flex-direction: column;
-  gap: 20px;
-}
-#input-container{
-  display: flex;
-  flex-direction: column;
-  gap: 8px;
-}
-#input-container label{
-  color: var(--secondary);
-  font-size: 16px;
-  font-weight: 400;
-}
-.form-input{
-  background-color: var(--white);
-  width: 360px;
-  padding: 10px 16px;
-  display: flex;
-  gap: 8px;
-  font-size: 16px;
-  border: solid 1px var(--gray);
-  border-radius: 8px;
-  outline: none;
-  transition: .2s;
-}
-.form-input:focus{
-  border: solid 1px var(--primary);
-  transition: .2s;
-}
-#input-container.error .form-input{
-  border: solid 1px var(--red);
-}
-#input-container.good .form-input{
-  border: solid 1px var(--green);
-}
-#input-container div{
-  display: none;
-  gap: 8px;
-}
-#input-container.error div, #input-container.good div{
-  display: flex;
-}
-#input-container div i, #input-container div p{
-  font-size: 12px;
-}
-#input-container.error div i{
-  color: var(--red);
-}
-#input-container.error div i.check{
-  display: none;
-}
-#input-container.good div i{
-  color: var(--green);
-}
-#input-container.good div i.alert{
-  display: none;
-}
-#input-container.error div p{
-  color: var(--red);
-}
-#input-container.good div p{
-  color: var(--green);
-=======
 .main-div{
   display: flex;
   height: 100%;
@@ -142,5 +66,4 @@ main h2{
   width: 100%;
   display: flex;
   gap: 20px;
->>>>>>> master
 }

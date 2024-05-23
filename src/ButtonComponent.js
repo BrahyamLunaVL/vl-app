@@ -1,8 +1,8 @@
 import './ButtonComponent.css'
 
-function ButtonComponent({buttonText}){
+function ButtonComponent({type, color, text}){
     return (
-        <button className='primary-button'>{buttonText}</button>
+        <button className={`${type}-button ${color}`}>{text}</button>
     )
 }
 

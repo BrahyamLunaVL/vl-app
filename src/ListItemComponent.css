@@ -1,0 +1,60 @@
+.list-item{
+    width: 100%;
+    padding-top: 50px;
+    position: relative;
+}
+.list-item:first-child{
+    padding-top: 0;
+}
+.list-item-line{
+    background-color: var(--white);
+    width: 1.5px;
+    height: 50px;
+    position: absolute;
+    top: 0;
+    left: 24px;
+    transform: translateX(-50%);
+}
+.list-item:first-child .list-item-line{
+    display: none;
+}
+.list-item-container{
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+.form-step{
+    min-width: 48px;
+    width: 48px;
+    min-height: 48px;
+    height: 48px;
+    position: relative;
+    border: solid 2px var(--white);
+    border-radius: 50%;
+}
+.list-item.active .form-step{
+    background-color: var(--white);
+}
+.list-item.active .form-step span, .list-item .form-step i{
+    display: none;
+}
+ .list-item.active .form-step i{
+    display: flex;
+}
+.form-step span, .form-step i{
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translateX(-50%) translateY(-50%);
+    color: var(--white);
+    font-size: 20px;
+    font-weight: 600;
+}
+.active .form-step span, .active .form-step i{
+    color: var(--primary);
+}
+.list-item-container p{
+    color: white;
+    font-size: 16px;
+    font-weight: 400;
+}

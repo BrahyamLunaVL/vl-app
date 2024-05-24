@@ -10,13 +10,8 @@ import {ListItemComponent} from './ListItemComponent';
 const validateSpacialCharacters = (text) => !text.includes('ñ')
 const validatePhoneNumber = (text) => text.includes('+')
 const validateLength = (text) => text.length > 6;
+const validateIsNotSelect = (text) => !text.includes('Select')
 
-const validateDate = (date) => {
-    const selectedDate = new Date(date);
-    const today = new Date();
-    today.setHours(0, 0, 0, 0);
-    return selectedDate >= today;
-};
 const validateFileSize = (file, maxSizeInBytes) => file.size <= maxSizeInBytes;
 const validateFileType = (file, allowedTypes) => allowedTypes.includes(file.type);
 
@@ -27,10 +22,15 @@ function FormComponent() {
     const [inputs, setInputs] = useState({
         'full-legal-name': { value: '', valid: false },
         'cell-phone-number': { value: '', valid: false },
+        'country': { value: '', valid: false },
         'city': { value: '', valid: false },
+        'migrant': { value: '', valid: false },
+        'gender': { value: '', valid: false },
         'birth': { value: '', valid: false },
         'download-internet': { value: '', valid: false },
+        'where-did-you-hear': { value: '', valid: false },
         'upload-internet': { value: '', valid: false },
+        'work-place': { value: '', valid: false }
     });
 
     const handleInputChange = (id, value, valid) => {
@@ -86,6 +86,8 @@ function FormComponent() {
                 <OptionComponent key={13} option='Venezuela'/>
               ]}
               message=""
+              validator={validateIsNotSelect}
+              onChange={handleInputChange}
             />
             <InputComponent
                 inputClass=""
@@ -110,6 +112,8 @@ function FormComponent() {
                 <OptionComponent key={16} option='No'/>
             ]}
             message=""
+            validator={validateIsNotSelect}
+            onChange={handleInputChange}
           />
           <div className='double-input'>
             <InputComponent
@@ -133,6 +137,8 @@ function FormComponent() {
                     <OptionComponent key={19} option='Female'/>
                 ]}
                 message=""
+                validator={validateIsNotSelect}
+                onChange={handleInputChange}
             />
             </div>
             <SelectComponent
@@ -147,6 +153,8 @@ function FormComponent() {
                     <OptionComponent key={23} option='LinkedIn'/>
                 ]}
                 message=""
+            validator={validateIsNotSelect}
+            onChange={handleInputChange}
             />
             <SelectComponent
                 selectClass=""
@@ -159,6 +167,8 @@ function FormComponent() {
                     <OptionComponent key={26} option='Office'/>
                 ]}
                 message=""
+            validator={validateIsNotSelect}
+            onChange={handleInputChange}
             />
             <InputComponent
                 inputClass="message"

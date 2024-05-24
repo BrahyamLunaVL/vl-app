@@ -1,8 +1,9 @@
-import logo from './logo.svg';
 import './App.css';
 import {AsideComponent} from './AsideComponent';
 import {ListComponent} from './ListComponent';
 import {FormComponent} from './FormComponent';
+import {FormComponentTwo} from './FormComponentTwo';
+import {FormComponentThree} from './FormComponentThree';
 
 function App() {
   return (
@@ -35,6 +36,8 @@ function App() {
         </nav>
         <h2>Ready to tell us about you?</h2>
         <FormComponent/>
+        <FormComponentTwo/>
+        <FormComponentThree/>
       </main>
     </div>
   );

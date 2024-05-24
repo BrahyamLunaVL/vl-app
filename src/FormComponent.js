@@ -207,10 +207,3 @@ function FormComponent() {
 }
 
 export {FormComponent};
-
-
-/*
-<form>
-
-        </form> 
-*/

@@ -1,9 +1,9 @@
 import React, { useState } from 'react';
 import './TextAreaComponent.css'
 
-function TextAreaComponent({inputClass, inputId, inputLabel, inputPlaceHolder, message, validator, onChange}) {
+function TextAreaComponent({inputClass, inputId, inputLabel, inputPlaceHolder, inputValue, message, validator, onChange}) {
     let classes = `input-container ${inputClass}`;
-    const [value, setValue]=useState('');
+    const [value, setValue]=useState(inputValue);
     const [isValid, setIsValid]=useState(true);
     const handleChange=(e)=>{
         const newValue=e.target.value;

@@ -32,13 +32,20 @@
     border: solid 2px var(--white);
     border-radius: 50%;
 }
-.list-item.active .form-step{
+.list-item.in-progress .form-step{
+    border: dashed 2px var(--white);
+}
+.list-item.completed .form-step{
     background-color: var(--white);
 }
-.list-item.active .form-step span, .list-item .form-step i{
+.list-item.disabled .form-step{
+    background-color: var(--gray);
+    border: solid 2px var(--gray-2);
+}
+.list-item.completed .form-step span, .list-item .form-step i{
     display: none;
 }
- .list-item.active .form-step i{
+ .list-item.completed .form-step i{
     display: flex;
 }
 .form-step span, .form-step i{
@@ -50,8 +57,11 @@
     font-size: 20px;
     font-weight: 600;
 }
-.active .form-step span, .active .form-step i{
+.completed .form-step span, .completed .form-step i{
     color: var(--primary);
+}
+.list-item.disabled .form-step span{
+    color: var(--secondary);
 }
 .list-item-container p{
     color: white;

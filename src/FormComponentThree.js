@@ -4,18 +4,20 @@ import {SelectComponent} from './SelectComponent';
 import {OptionComponent} from './OptionComponent';
 import {InputFileComponent} from './InputFileComponent';
 
+import {APITHREE} from "./formThreeAPI"
+
 const validateIsNotSelect = (text) => !text.includes('Select')
 
 const validateNotEmpty = (text) => text.trim().length > 0;
 
 function FormComponentThree() {
   const [inputs, setInputs] = useState({
-    'education': { value: '', valid: false },
-    'university': { value: '', valid: false },
-    'degree-name': { value: '', valid: false },
-    'student': { value: '', valid: false },
-    'linkedin': { value: '', valid: false },
-    'portfolio': { value: '', valid: false }
+    'education': { value: APITHREE.university, valid:  APITHREE.education==""?false:true},
+    'university': { value: APITHREE.tellAboutYou, valid:  APITHREE.university==""?false:true},
+    'degree-name': { value: APITHREE.degreeName, valid:  APITHREE.degreeName==""?false:true},
+    'student': { value: APITHREE.student, valid:  APITHREE.student==""?false:true},
+    'linkedin': { value: APITHREE.linkedin, valid:  APITHREE.linkedin==""?false:true},
+    'portfolio': { value: APITHREE.portfolio, valid:  APITHREE.portfolio==""?false:true}
   });
 
   const handleInputChange = (id, value, valid) => {
@@ -41,6 +43,7 @@ function FormComponentThree() {
           <OptionComponent key={4} option='University'/>,
           <OptionComponent key={5} option='University (Master)'/>
         ]}
+        selectValue={APITHREE.university}
         message=""
         validator={validateIsNotSelect}
         onChange={handleInputChange}
@@ -51,6 +54,7 @@ function FormComponentThree() {
         inputLabel="What university degree did you graduate with?*"
         type="Text"
         inputPlaceHolder="Enter your university"
+        inputValue={APITHREE.tellAboutYou}
         message="University selected"
         validator={validateNotEmpty}
         onChange={handleInputChange}
@@ -61,6 +65,7 @@ function FormComponentThree() {
         inputLabel="What is your degree's exact name as listed in your diploma (In English)?*"
         type="Text"
         inputPlaceHolder="Enter your degree name (in English)"
+        inputValue={APITHREE.degreeName}
         message="Degree name typed"
         validator={validateNotEmpty}
         onChange={handleInputChange}
@@ -75,6 +80,7 @@ function FormComponentThree() {
           <OptionComponent key={25} option='Yes'/>,
           <OptionComponent key={26} option='No'/>
         ]}
+        selectValue={APITHREE.student}
         message=""
         validator={validateIsNotSelect}
         onChange={handleInputChange}
@@ -87,6 +93,7 @@ function FormComponentThree() {
         inputLabel="LinkedIn.com Profile"
         type="Text"
         inputPlaceHolder="www.linkedin.com/in/"
+        inputValue={APITHREE.linkedin}
         message="You've selected Colombia"
         validator={validateNotEmpty}
         onChange={handleInputChange}
@@ -97,6 +104,7 @@ function FormComponentThree() {
         inputLabel="Design Portfolio page, such as Behance"
         type="Text"
         inputPlaceHolder="www.yourportfolio.com"
+        inputValue={APITHREE.portfolio}
         message=""
         validator={validateNotEmpty}
         onChange={handleInputChange}

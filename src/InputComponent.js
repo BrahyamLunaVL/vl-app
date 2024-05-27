@@ -1,10 +1,10 @@
 import React, { useState } from 'react';
 import './InputComponent.css'
 
-function InputComponent({inputClass, inputId, inputLabel, type, inputPlaceHolder, message, validator, onChange }){
+function InputComponent({inputClass, inputId, inputLabel, type, inputPlaceHolder, inputValue, message, validator, onChange }){
   let classes = `input-container ${inputClass}`;
 
-  const [value, setValue]=useState('');
+  const [value, setValue]=useState(inputValue);
   const [isValid, setIsValid]=useState(true);
 
   const handleChange=(e)=>{

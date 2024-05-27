@@ -4,6 +4,10 @@ import {ListComponent} from './ListComponent';
 import {FormComponent} from './FormComponent';
 import {FormComponentTwo} from './FormComponentTwo';
 import {FormComponentThree} from './FormComponentThree';
+import {FormComponentFour} from "./FormComponentFour";
+import {FormComponentFive} from "./FormComponentFive"
+
+import {APIFORMSTATE} from './formStateAPI'
 
 function App() {
   return (
@@ -13,12 +17,12 @@ function App() {
         list={
           <ListComponent
             listItems={[
-              {step: 1, text: 'General Information', state: 'active'},
-              {step: 2, text: 'Current Work Status', state: 'inactive'},
-              {step: 3, text: 'Education and Work History', state: 'inactive'},
-              {step: 4, text: 'English Skills & Acknowledgment From Assesment', state: 'inactive'},
-              {step: 5, text: 'Final Questions', state: 'inactive'},
-              {step: 6, text: 'Disclaimer', state: 'inactive'}
+              {step: 1, text: 'General Information', state:APIFORMSTATE.form1},
+              {step: 2, text: 'Current Work Status', state:APIFORMSTATE.form2},
+              {step: 3, text: 'Education and Work History', state:APIFORMSTATE.form3},
+              {step: 4, text: 'English Skills & Acknowledgment From Assesment', state:APIFORMSTATE.form4},
+              {step: 5, text: 'Final Questions', state:APIFORMSTATE.form5},
+              {step: 6, text: 'Disclaimer', state:APIFORMSTATE.form6}
             ]}
           />
         }
@@ -38,6 +42,8 @@ function App() {
         <FormComponent/>
         <FormComponentTwo/>
         <FormComponentThree/>
+        <FormComponentFour/>
+        <FormComponentFive/>
       </main>
     </div>
   );

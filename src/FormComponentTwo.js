@@ -4,17 +4,19 @@ import {SelectComponent} from './SelectComponent';
 import {OptionComponent} from './OptionComponent';
 import {TextAreaComponent} from "./TextAreaComponent";
 
+import {APITWO} from "./formTwoAPI"
+
 const validateIsNotSelect = (text) => !text.includes('Select')
 const validateNotEmpty = (text) => text.trim().length > 0;
 
 function FormComponentTwo() {
   const [inputs, setInputs] = useState({
-    'tell-about-you': { value: '', valid: false },
-    'years-worked': { value: '', valid: false },
-    'current-employment-status': { value: '', valid: false },
-    'ideal-working-schedule': { value: '', valid: false },
-    'kind-of-roles': { value: '', valid: false },
-    'working-location': { value: '', valid: false }
+    'tell-about-you': {value: APITWO.tellAboutYou, valid: APITWO.tellAboutYou==""?false:true},
+    'years-worked': {value: APITWO.yearsWorked, valid: APITWO.yearsWorked==""?false:true},
+    'current-employment-status': {value: APITWO.currentEmployementStatus, valid: APITWO.currentEmployementStatus==""?false:true},
+    'ideal-working-schedule': {value: APITWO.idealWorkingSchedule, valid: APITWO.idealWorkingSchedule==""?false:true},
+    'kind-of-roles': {value: APITWO.kindOfRoles, valid: APITWO.kindOfRoles==""?false:true},
+    'working-location': {value: APITWO.workingLocation, valid: APITWO.workingLocation==""?false:true}
   });
 
   const handleInputChange = (id, value, valid) => {
@@ -33,6 +35,7 @@ function FormComponentTwo() {
         inputId="tell-about-you"
         inputLabel="In a few sentences, please tell us what you're currently doing for work to earn a living?*"
         inputPlaceHolder="Tell us about you"
+        inputValue={APITWO.tellAboutYou}
         message="Minimum 100 characters"
         validator={validateNotEmpty}
         onChange={handleInputChange}
@@ -43,8 +46,9 @@ function FormComponentTwo() {
           inputId="years-worked"
           inputLabel="How many years have you worked remotely?*"
           type="number"
-          inputPlaceHolder="Years worked remotly"
-          message="Doesm't look like a valid cell phone number"
+          inputPlaceHolder="Years worked remotely"
+          inputValue={APITWO.yearsWorked}
+          message="Doesn't look like a valid cell phone number"
           validator={validateNotEmpty}
           onChange={handleInputChange}
         />
@@ -58,6 +62,7 @@ function FormComponentTwo() {
             <OptionComponent key={2} option='Employed'/>,
             <OptionComponent key={3} option='Unemployed'/>
           ]}
+          selectValue={APITWO.currentEmployementStatus}
           message=""
           validator={validateIsNotSelect}
           onChange={handleInputChange}
@@ -73,6 +78,7 @@ function FormComponentTwo() {
             <OptionComponent key={5} option='Part time'/>,
             <OptionComponent key={6} option='Full time'/>
           ]}
+          selectValue={APITWO.idealWorkingSchedule}
           message=""
           validator={validateIsNotSelect}
           onChange={handleInputChange}
@@ -90,6 +96,7 @@ function FormComponentTwo() {
             <OptionComponent key={11} option='Marketing'/>,
             <OptionComponent key={12} option='Data'/>
           ]}
+          selectValue={APITWO.kindOfRoles}
           message=""
           validator={validateIsNotSelect}
           onChange={handleInputChange}
@@ -104,6 +111,7 @@ function FormComponentTwo() {
             <OptionComponent key={14} option='Remote'/>,
             <OptionComponent key={15} option='On site'/>
           ]}
+          selectValue={APITWO.workingLocation}
           message=""
           validator={validateIsNotSelect}
           onChange={handleInputChange}

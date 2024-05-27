@@ -1,8 +1,8 @@
 import './SelectComponent.css'
 import React, { useState } from 'react';
 
-function SelectComponent({selectClass, selectId, selectLabel, selectName, value, message, validator, onChange}){
-  const [selectedValue, setSelectedValue] = useState('');
+function SelectComponent({selectClass, selectId, selectLabel, selectName, value, selectValue, message, validator, onChange}){
+  const [selectedValue, setSelectedValue] = useState(selectValue);
   const [isValid, setIsValid] = useState(true);
 
   const handleChange = (e) => {

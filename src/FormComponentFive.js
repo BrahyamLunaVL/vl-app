@@ -74,18 +74,13 @@ function FormComponentFive() {
               onChange={handleInputChange}
             />
           </div>
-            <InputComponent
-                inputClass="message"
-                inputId="voice-sample"
-                inputLabel="Upload a sample voice/audio of you speaking in English*"
-                type="file"
-                inputPlaceHolder=""
-                inputValue={APIFIVE.voiceSample}
-                message="Please go to Speedtest.net to complete this test. Here's an illustrative screenshot example"
-                validator={validateFileSize}
-                onChange={handleInputChange}
+            <InputFileComponent
+              inputClass="message"
+              inputId="internet"
+              inputLabel="Upload Internet Speed Screenshot*"
+              inputValue=''
+              message="Please go to Speedtest.net to complete this test. Here's an illustrative screenshot example"
             />
-            <InputFileComponent/>
             <InputComponent
                 inputClass=""
                 inputId="personality-test"

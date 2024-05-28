@@ -1,41 +1,25 @@
+import React from 'react';
+
 import './InputFileComponent.css'
 
-function InputFileComponent() {
+function InputFileComponent({inputClass, inputId, inputLabel, message, onChange}){
   return(
-    <div className="file-list">
-      <div className='file'>
-        <div className='file-description'>
-          <div className='file-details'>
-            <i className="fa-regular fa-file"></i>
-            <div className='file-properties'>
-              <p>Name File</p>
-              <p>200 kb</p>
-            </div>
-          </div>
-          <i className="fa-regular fa-trash-can"></i>
+    <div className={`input-file-container ${inputClass}`}>
+      <label htmlFor={inputId}>{inputLabel}</label>
+      <div className='input-file-drag-and-drop'>
+        <div className='drag-and-drop-message'>
+          <i className="fa-solid fa-file-arrow-up"></i>
+          <p>Drag and Drop</p>
+          <p>or</p>
+          <p><b>Click to Upload</b></p>
+          <p>{`PDF or JPG (max 12Mb)`}</p>
         </div>
-        <div className='file-progress'>
-          <progress id="file" max="100" value="80">80%</progress>
-          <p>80%</p>
-        </div>
+        <input id={inputId} type='file' onChange={onChange}/>
       </div>
-      <div className='file'>
-        <div className='file-description'>
-          <div className='file-details'>
-            <i className="fa-regular fa-file"></i>
-            <div className='file-properties'>
-              <p>Name File</p>
-              <p>200 kb</p>
-            </div>
-          </div>
-          <i className="fa-regular fa-trash-can"></i>
-        </div>
-        <div className='file-progress'>
-          <progress id="file" max="100" value="30">30%</progress>
-          <p>30%</p>
-        </div>
+      <div className='input-messages'>
+        <p>{message}</p>
       </div>
-    </div>  
+    </div> 
   )
 }
 

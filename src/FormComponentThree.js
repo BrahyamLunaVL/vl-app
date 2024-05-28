@@ -85,7 +85,13 @@ function FormComponentThree() {
         validator={validateIsNotSelect}
         onChange={handleInputChange}
       />
-      <InputFileComponent/>
+      <InputFileComponent
+        inputClass="message"
+        inputId="internet"
+        inputLabel="Upload Internet Speed Screenshot*"
+        inputValue=''
+        message="Please go to Speedtest.net to complete this test. Here's an illustrative screenshot example"
+      />
       <div className='double-input'>
       <InputComponent
         inputClass=""

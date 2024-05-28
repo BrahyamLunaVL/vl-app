@@ -1,3 +1,52 @@
+.input-file-container{
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+.input-file-container label{
+  color: var(--secondary);
+  font-size: 13px;
+  font-weight: 400;
+}
+.input-file-drag-and-drop{
+  width: 100%;
+  padding: 12px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border: dashed 1px var(--gray);
+  border-radius: 8px;
+}
+.drag-and-drop-message{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 4px;
+}
+.drag-and-drop-message i{
+  margin-bottom: 8px;
+  color: var(--gray-2);
+  font-size: 40px;
+}
+.drag-and-drop-message p{
+  color: var(--gray-2);
+  font-size: 16px;
+  font-weight: 400;
+}
+.drag-and-drop-message p:nth-child(2), .drag-and-drop-message p:nth-child(3){
+  color: var(--light-gray);
+}
+.drag-and-drop-message p b{
+  font-weight: 700;
+}
+.drag-and-drop-message p:nth-child(4){
+  color: var(--gray-2);
+}
+.drag-and-drop-message p:nth-child(5){
+  color: var(--gray-2);
+  font-weight: 300;
+}
 .file-list{
     background-color: var(--white);
     width: 100%;

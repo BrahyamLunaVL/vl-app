@@ -1,12 +1,9 @@
-import { useEffect} from 'react';
 import React, { useState } from 'react';
 import {InputComponent} from "./InputComponent";
 import {SelectComponent} from './SelectComponent';
 import {CheckboxComponent} from './CheckboxComponent';
 import {OptionComponent} from './OptionComponent';
 import {InputFileComponent} from './InputFileComponent';
-import {ButtonComponent} from './ButtonComponent';
-import {ListItemComponent} from './ListItemComponent';
 
 import {APIONE} from './formOneAPI'
 
@@ -14,15 +11,10 @@ const validateSpacialCharacters = (text) => !text.includes('ñ')
 const validatePhoneNumber = (text) => text.includes('+')
 const validateLength = (text) => text.length > 6;
 const validateIsNotSelect = (text) => !text.includes('Select')
-
-const validateFileSize = (file, maxSizeInBytes) => file.size <= maxSizeInBytes;
-const validateFileType = (file, allowedTypes) => allowedTypes.includes(file.type);
-
 const validatePointSymbol= (text) => text.includes('.')
 const validateNotEmpty = (text) => text.trim().length > 0;
 
 function FormComponent() {
-  let valuesAPIONE=[APIONE.fullLegalName==""?false:true]
     const [inputs, setInputs] = useState({
         'full-legal-name': {value: APIONE.fullLegalName, valid: APIONE.fullLegalName==""?false:true},
         'cell-phone-number': {value: APIONE.cellPhoneNumber, valid: APIONE.cellPhoneNumber==""?false:true},
@@ -37,18 +29,55 @@ function FormComponent() {
         'work-place': {value: APIONE.workPlace, valid: APIONE.workPlace=="Select"?false:true}
     });
     
+    const [selectedFile, setSelectedFile] = useState(null);
+    const [message, setMessage] = useState('');
+
     const handleInputChange = (id, value, valid) => {
         setInputs(prev => ({
           ...prev,
           [id]: { value, valid }
-          
         }));
     };
+
+    const handleFileChange = (event) => {
+      const file = event.target.files[0];
+      if (file) {
+        setSelectedFile(file);
+      }
+    };
+  
+    const handleSubmit = async (event) => {
+      event.preventDefault();
+  
+      if (!selectedFile) {
+        alert('Please select a file first!');
+        return;
+      }
+  
+      const formData = new FormData();
+      formData.append('file', selectedFile);
+  
+      try {
+        const response = await fetch('/upload', {
+          method: 'POST',
+          body: formData
+        });
+  
+        if (response.ok) {
+          setMessage('File uploaded successfully');
+        } else {
+          setMessage('Failed to upload file');
+        }
+      } catch (error) {
+        console.error('Error uploading file:', error);
+        setMessage('Error uploading file');
+      }
+    }
 
   const allValid = Object.values(inputs).every(input => input.valid);
 
   return (
-    <form>
+    <form onSubmit={handleSubmit}>
         <InputComponent
             inputClass="message"
             inputId="full-legal-name"
@@ -184,18 +213,32 @@ function FormComponent() {
               validator={validateIsNotSelect}
               onChange={handleInputChange}
             />
-            <InputComponent
-                inputClass="message"
-                inputId="internet"
-                inputLabel="Upload Internet Speed Screenshot*"
-                type="file"
-                inputPlaceHolder=""
-                inputValue=''
-                message="Please go to Speedtest.net to complete this test. Here's an illustrative screenshot example"
-                validator={validateFileSize}
-                onChange={handleInputChange}
-            />
-            <InputFileComponent/>
+            <InputFileComponent
+        inputClass="message"
+        inputId="internet"
+        inputLabel="Upload Internet Speed Screenshot*"
+        message="Please go to Speedtest.net to complete this test. Here's an illustrative screenshot example"
+        onChange={handleFileChange}
+      />
+      {selectedFile && (
+        <div className="file-list">
+          <div className='file'>
+            <div className='file-description'>
+              <div className='file-details'>
+                <i className="fa-regular fa-file"></i>
+                <div className='file-properties'>
+                  <p>{selectedFile.name}</p>
+                  <p>{(selectedFile.size / 1024).toFixed(2)} kb</p>
+                </div>
+              </div>
+              <i className="fa-regular fa-trash-can" onClick={() => setSelectedFile(null)}></i>
+            </div>
+            <div className='file-progress'>
+              <progress id="file" max="100" value="100">100%</progress>
+              <p>100%</p>
+            </div>
+          </div>
+        </div>)}
           <div className='double-input'>
             <InputComponent
                 inputClass=""

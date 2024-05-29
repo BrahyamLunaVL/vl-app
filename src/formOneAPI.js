@@ -3,6 +3,7 @@ const APIONE={
     cellPhoneNumber:'+57 3005284726',
     country:'Colombia',
     city:'Bogotá',
+    termsAgreement:true,
     migrant:'Yes',
     gender:'Male',
     birth:'1995-09-04',

@@ -25,7 +25,7 @@
     border: solid 1px var(--primary);
     transition: .2s;
 }
-.input-container.error .form-input{
+.input-container.error .form-input.invalid{
     border: solid 1px var(--red);
 }
 .input-container.good .form-input{
@@ -36,7 +36,7 @@
     align-items: center;
     gap: 8px;
 }
-.input-container.message .input-messages, .input-container.error .input-messages, .input-container.good .input-messages{
+.input-container.message .input-messages, .input-container.error .invalid ~ .input-messages, .input-container.good .input-messages{
     display: flex;
 }
 .input-messages i, .input-messages p{

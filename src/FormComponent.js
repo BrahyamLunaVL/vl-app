@@ -60,7 +60,7 @@ function FormComponent({show, formName, onSubmit}) {
     <form className={show} onSubmit={handleSubmit}>
       <h2>{formName}</h2>
         <InputComponent
-            inputClass="message"
+            inputClass="error"
             inputId="full-legal-name"
             inputLabel="Full legal name"
             type="text"
@@ -108,14 +108,14 @@ function FormComponent({show, formName, onSubmit}) {
               onChange={handleInputChange}
             />
             <InputComponent
-                inputClass=""
+                inputClass="error"
                 inputId="city"
                 inputLabel="City you live in*"
                 type="text"
                 inputPlaceHolder="Enter the city you live in"
                 inputValue={APIONE.city}
-                message=""
-                validator={validateLength}
+                message="Enter a city name"
+                validator={validateNotEmpty}
                 onChange={handleInputChange}
             />
           </div>
@@ -222,24 +222,24 @@ function FormComponent({show, formName, onSubmit}) {
         </div>)}
           <div className='double-input'>
             <InputComponent
-                inputClass=""
+                inputClass="error"
                 inputId="download-internet"
                 inputLabel="Download Internet Speed"
                 type="Text"
                 inputPlaceHolder="E.g. 13.95 Mbps"
                 inputValue={APIONE.downloadInternet}
-                message="You've selected Colombia"
+                message="Enter your Download internet speed"
                 validator={validatePointSymbol}
                 onChange={handleInputChange}
             />
             <InputComponent
-                inputClass=""
+                inputClass="error"
                 inputId="upload-internet"
                 inputLabel="Upload Internet Speed"
                 type="Text"
                 inputPlaceHolder="E.g. 21.27 Mbps"
                 inputValue={APIONE.uploadInternet}
-                message=""
+                message="Enter your Upload internet speed"
                 validator={validatePointSymbol}
                 onChange={handleInputChange}
             />

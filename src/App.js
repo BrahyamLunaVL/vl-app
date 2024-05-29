@@ -11,7 +11,7 @@ import {FormComponentFive} from "./FormComponentFive"
 import {APIFORMSTATE} from './formStateAPI'
 
 function App() {
-  const [visibleForm, setVisibleForm]=useState('form2')
+  const [visibleForm, setVisibleForm]=useState('form1')
   const [formStates, setFormStates] = useState(APIFORMSTATE);
   
   const handleFormComplete = (form) => {
@@ -19,6 +19,22 @@ function App() {
       ...prev,
       [form]: 'completed'
     }));
+    if(form=="form1"){
+      setVisibleForm('form2');
+    }
+    else if(form=="form2"){
+      setVisibleForm('form3');
+    }
+    else if(form=="form3"){
+      setVisibleForm('form4');
+    }
+    else if(form=="form4"){
+      setVisibleForm('form5');
+    }
+    else if(form=="form5"){
+      setVisibleForm('form6');
+    }
+    
   };
 
   const renderFormComponent=()=>{

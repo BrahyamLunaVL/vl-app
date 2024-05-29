@@ -9,7 +9,7 @@ import {APITWO} from "./formTwoAPI"
 const validateIsNotSelect = (text) => !text.includes('Select')
 const validateNotEmpty = (text) => text.trim().length > 0;
 
-function FormComponentTwo() {
+function FormComponentTwo({show, formName, onSubmit}) {
   const [inputs, setInputs] = useState({
     'tell-about-you': {value: APITWO.tellAboutYou, valid: APITWO.tellAboutYou==""?false:true},
     'years-worked': {value: APITWO.yearsWorked, valid: APITWO.yearsWorked==""?false:true},
@@ -28,8 +28,16 @@ function FormComponentTwo() {
 
   const allValid = Object.values(inputs).every(input => input.valid);
 
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    if (allValid) {
+      onSubmit();
+    }
+  };
+  
   return (
-    <form>
+    <form className={show} onSubmit={handleSubmit}>
+      <h2>{formName}</h2>
       <TextAreaComponent
         inputClass="message"
         inputId="tell-about-you"

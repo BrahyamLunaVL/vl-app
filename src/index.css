@@ -63,6 +63,9 @@ main form{
   align-items: center;
   gap: 8px;
 }
+main form.hidden{
+  display: none;
+}
 main h2{
   margin-bottom: 86px;
   color: var(--secondary);

@@ -14,7 +14,7 @@ const validateIsNotSelect = (text) => !text.includes('Select')
 const validatePointSymbol= (text) => text.includes('.')
 const validateNotEmpty = (text) => text.trim().length > 0;
 
-function FormComponent() {
+function FormComponent({show, formName, onSubmit}) {
     const [inputs, setInputs] = useState({
         'full-legal-name': {value: APIONE.fullLegalName, valid: APIONE.fullLegalName==""?false:true},
         'cell-phone-number': {value: APIONE.cellPhoneNumber, valid: APIONE.cellPhoneNumber==""?false:true},
@@ -40,44 +40,25 @@ function FormComponent() {
     };
 
     const handleFileChange = (event) => {
-      const file = event.target.files[0];
-      if (file) {
-        setSelectedFile(file);
-      }
-    };
-  
+      setSelectedFile(event.target.files[0]);
+    }
+
     const handleSubmit = async (event) => {
       event.preventDefault();
-  
       if (!selectedFile) {
         alert('Please select a file first!');
         return;
       }
-  
-      const formData = new FormData();
-      formData.append('file', selectedFile);
-  
-      try {
-        const response = await fetch('/upload', {
-          method: 'POST',
-          body: formData
-        });
-  
-        if (response.ok) {
-          setMessage('File uploaded successfully');
-        } else {
-          setMessage('Failed to upload file');
-        }
-      } catch (error) {
-        console.error('Error uploading file:', error);
-        setMessage('Error uploading file');
+      else{
+        onSubmit();
       }
     }
 
   const allValid = Object.values(inputs).every(input => input.valid);
 
   return (
-    <form onSubmit={handleSubmit}>
+    <form className={show} onSubmit={handleSubmit}>
+      <h2>{formName}</h2>
         <InputComponent
             inputClass="message"
             inputId="full-legal-name"

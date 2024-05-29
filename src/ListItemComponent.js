@@ -1,8 +1,8 @@
 import './ListItemComponent.css'
 
-function ListItemComponent({step, text, state}){
+function ListItemComponent({step, text, state, onClick}){
     return (
-        <li className={`list-item ${state}`}>
+        <li className={`list-item ${state}`} onClick={onClick}>
             <div className='list-item-line'></div>
             <div className='list-item-container'>
                 <div className='form-step'>

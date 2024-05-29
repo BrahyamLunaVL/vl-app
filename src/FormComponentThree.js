@@ -10,7 +10,7 @@ const validateIsNotSelect = (text) => !text.includes('Select')
 
 const validateNotEmpty = (text) => text.trim().length > 0;
 
-function FormComponentThree() {
+function FormComponentThree({show, formName, onSubmit}) {
   const [inputs, setInputs] = useState({
     'education': { value: APITHREE.university, valid:  APITHREE.education==""?false:true},
     'university': { value: APITHREE.tellAboutYou, valid:  APITHREE.university==""?false:true},
@@ -19,6 +19,8 @@ function FormComponentThree() {
     'linkedin': { value: APITHREE.linkedin, valid:  APITHREE.linkedin==""?false:true},
     'portfolio': { value: APITHREE.portfolio, valid:  APITHREE.portfolio==""?false:true}
   });
+
+  const [selectedFile, setSelectedFile] = useState(null);
 
   const handleInputChange = (id, value, valid) => {
     setInputs(prev => ({
@@ -29,8 +31,24 @@ function FormComponentThree() {
 
   const allValid = Object.values(inputs).every(input => input.valid);
 
+  const handleFileChange = (event) => {
+    setSelectedFile(event.target.files[0]);
+  }
+  
+  const handleSubmit = async (event) => {
+    event.preventDefault();
+    if (!selectedFile) {
+      alert('Please select a file first!');
+      return;
+    }
+    else{
+      onSubmit();
+    }
+  }
+
   return (
-    <form>
+    <form className={show} onSubmit={handleSubmit}>
+      <h2>{formName}</h2>
       <SelectComponent
         selectClass=""
         selectId="education"
@@ -89,8 +107,8 @@ function FormComponentThree() {
         inputClass="message"
         inputId="internet"
         inputLabel="Upload Internet Speed Screenshot*"
-        inputValue=''
         message="Please go to Speedtest.net to complete this test. Here's an illustrative screenshot example"
+        onChange={handleFileChange}
       />
       <div className='double-input'>
       <InputComponent

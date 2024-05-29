@@ -12,13 +12,15 @@ const validateIsNotSelect = (text) => !text.includes('Select')
 const validateFileSize = (file, maxSizeInBytes) => file.size <= maxSizeInBytes;
 const validateNotEmpty = (text) => text.trim().length > 0;
 
-function FormComponentFive() {
+function FormComponentFive({show, formName, onSubmit}) {
     const [inputs, setInputs] = useState({
         'english-test-link': {value: APIFIVE.englishTestLink, valid: APIFIVE.englishTestLink==""?false:true},
         'english-test-score': {value: APIFIVE.englishTestScore, valid: APIFIVE.englishTestScore==""?false:true},
         'other-languages': {value: APIFIVE.otherLanguages, valid: APIFIVE.otherLanguages=="Select"?false:true},
         'personality-test': {value: APIFIVE.personalityTest, valid: APIFIVE.personalityTest==""?false:true}
     });
+
+    const [selectedFile, setSelectedFile] = useState(null);
     
     const handleInputChange = (id, value, valid) => {
         setInputs(prev => ({
@@ -30,8 +32,24 @@ function FormComponentFive() {
 
   const allValid = Object.values(inputs).every(input => input.valid);
 
+  const handleFileChange = (event) => {
+    setSelectedFile(event.target.files[0]);
+  }
+  
+  const handleSubmit = async (event) => {
+    event.preventDefault();
+    if (!selectedFile) {
+      alert('Please select a file first!');
+      return;
+    }
+    else{
+      onSubmit();
+    }
+  }
+
   return (
-    <form>
+    <form className={show} onSubmit={handleSubmit}>
+      <h2>{formName}</h2>
         <InputComponent
             inputClass="message"
             inputId="english-test-link"
@@ -78,8 +96,8 @@ function FormComponentFive() {
               inputClass="message"
               inputId="internet"
               inputLabel="Upload Internet Speed Screenshot*"
-              inputValue=''
               message="Please go to Speedtest.net to complete this test. Here's an illustrative screenshot example"
+              onChange={handleFileChange}
             />
             <InputComponent
                 inputClass=""

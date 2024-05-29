@@ -1,7 +1,7 @@
 import './ListComponent.css'
 import {ListItemComponent } from './ListItemComponent'
 
-const ListComponent = ({ listItems }) => {
+const ListComponent=({listItems, onItemClick})=>{
     return (
         <ul className='list'>
             {listItems.map((item, index) => (
@@ -10,6 +10,7 @@ const ListComponent = ({ listItems }) => {
                     step={item.step}
                     text={item.text}
                     state={item.state}
+                    onClick={() => onItemClick(item.form)}
                 />
             ))}
         </ul>

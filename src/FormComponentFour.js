@@ -5,7 +5,7 @@ import {APIFOUR} from "./formFourAPI"
 
 const validateNotEmpty = (text) => text.trim().length > 10;
 
-function FormComponentFour() {
+function FormComponentFour({show, formName, onSubmit}) {
   const [inputs, setInputs] = useState({
     'your-skills': { value: APIFOUR.yourSkills, valid:  APIFOUR.yourSkills==""||APIFOUR.yourSkills.length<10?false:true},
     'your-projects': { value: APIFOUR.yourProjects, valid:  APIFOUR.yourProjects==""||APIFOUR.yourProjects.length<10?false:true},
@@ -22,8 +22,16 @@ function FormComponentFour() {
 
   const allValid = Object.values(inputs).every(input => input.valid);
 
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    if (allValid) {
+      onSubmit();
+    }
+  };
+
   return (
-    <form>
+    <form className={show} onSubmit={handleSubmit}>
+      <h2>{formName}</h2>
       <TextAreaComponent
         inputClass="message"
         inputId="your-skills"

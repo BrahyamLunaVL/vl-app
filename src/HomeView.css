@@ -1,0 +1,76 @@
+.main-div{
+    display: flex;
+    height: 100%;
+  }
+  main{
+    width: 70%;
+    height: 100vh;
+    padding: 150px 32px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    position: relative;
+    overflow-y: scroll;
+  }
+  .main-nav{
+    background-color: var(--white);
+    width: 70%;
+    padding: 20px 30px;
+    display: flex;
+    justify-content: end;
+    gap: 12px;
+    position: fixed;
+    top: 0;
+    right: 0;
+    z-index: 4;
+  }
+  .main-nav a{
+    text-decoration: none;
+  }
+  main form{
+    width: 700px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 8px;
+  }
+  main form.hidden{
+    display: none;
+  }
+  main h2{
+    margin-bottom: 86px;
+    color: var(--secondary);
+    font-size: 25px;
+    font-weight: 700;
+  }
+  .double-input{
+    width: 100%;
+    display: flex;
+    gap: 20px;
+  }
+  
+  button:disabled{
+    background-color: var(--gray);
+  }
+ main .logo{
+  height: 32px;
+ }
+ main .title{
+  font-size: 39px;
+  font-size: 800;
+ }
+ .login-form-container{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 8px;
+ }
+ .password-container{
+  width: 100%;
+  position: relative;
+ }
+ .input-link-button{
+  position: absolute;
+  top: 0;
+  right: 0;
+ }

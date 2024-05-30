@@ -25,6 +25,12 @@
     border: none;
     border-radius: 8px;
 }
+.text-button{
+    background: none;
+    color: var(--gray-2);
+    font-size: 13px;
+    border: none;
+}
 .primary-button{
     background-color: var(--primary);
     color: var(--white);

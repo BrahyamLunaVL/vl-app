@@ -42,7 +42,8 @@ function LogInView({changeView}){
       <main>
         <div className='login-form-container'>
           <img className='logo' src={logo} alt='Virtual Latinos Logo'/>
-          <h2>Welcome Back to Virtual Latinos 👋</h2>
+          <h2 className='title'>Welcome Back to Virtual Latinos 👋</h2>
+          <p className='view-description'>Ready to Dive Back In? Enter Your Credentials Below</p>
           <InputComponent
             inputClass="error"
             inputId="email"

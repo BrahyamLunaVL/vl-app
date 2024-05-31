@@ -4,6 +4,7 @@ import {LogInView} from './LogInView';
 import {HomeView} from './HomeView';
 import {ForgotPasswordView} from './ForgotPasswordView'
 import {YourPasswordView} from './YourPasswordView'
+import {PopUpComponent} from './PopUpComponent';
 
 function App(){
   const [view, setView] = useState('login');
@@ -23,6 +24,12 @@ function App(){
         ) : (
           <HomeView  changeView={changeView}/>
         )}
+
+        {/*<PopUpComponent
+        icon="fa-lock"
+        title="Change Password"
+        description="Ready for a New Password? Provide Your Updated Information Below"
+      />*/}
     </>
   )
 }

@@ -48,7 +48,6 @@
     display: flex;
     gap: 20px;
   }
-  
   button:disabled{
     background-color: var(--gray);
   }
@@ -58,6 +57,11 @@
  main .title{
   font-size: 39px;
   font-size: 800;
+  margin-bottom: 0;
+ }
+ main .view-description{
+  margin-bottom: 72px;
+  font-size: 20px;
  }
  .login-form-container{
   display: flex;

@@ -8,7 +8,7 @@ const APIONE={
     gender:'Male',
     birth:'1995-09-04',
     whereDidYouHear:'LinkedIn',
-    workPlace:'House',
+    workPlace:'Home',
     downloadInternet:'11.34',
     uploadInternet:'33.45'
 }

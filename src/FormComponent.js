@@ -9,7 +9,6 @@ import {APIONE} from './formOneAPI'
 
 const validateSpacialCharacters = (text) => !text.includes('ñ')
 const validatePhoneNumber = (text) => text.includes('+')
-const validateLength = (text) => text.length > 6;
 const validateIsNotSelect = (text) => !text.includes('Select')
 const validatePointSymbol= (text) => text.includes('.')
 const validateNotEmpty = (text) => text.trim().length > 0;
@@ -29,7 +28,8 @@ function FormComponent({show, formName, onSubmit}) {
         'work-place': {value: APIONE.workPlace, valid: APIONE.workPlace=="Select"?false:true}
     });
     
-    const [selectedFile, setSelectedFile] = useState(null);
+    const [selectedFiles, setSelectedFiles] = useState([]);
+
     const [message, setMessage] = useState('');
 
     const handleInputChange = (id, value, valid) => {
@@ -40,12 +40,17 @@ function FormComponent({show, formName, onSubmit}) {
     };
 
     const handleFileChange = (event) => {
-      setSelectedFile(event.target.files[0]);
+      const files = Array.from(event.target.files);
+      setSelectedFiles(prevFiles => [...prevFiles, ...files]);
     }
+
+    const handleRemoveFile = (fileIndex) => {
+      setSelectedFiles(prevFiles => prevFiles.filter((_, index) => index !== fileIndex));
+    }    
 
     const handleSubmit = async (event) => {
       event.preventDefault();
-      if (!selectedFile) {
+      if (selectedFiles.length === 0) {
         alert('Please select a file first!');
         return;
       }
@@ -186,7 +191,7 @@ function FormComponent({show, formName, onSubmit}) {
               selectName="work-place"
               value={[
                 <OptionComponent key={24} option='Select'/>,
-                <OptionComponent key={25} option='House'/>,
+                <OptionComponent key={25} option='Home'/>,
                 <OptionComponent key={26} option='Office'/>
               ]}
               selectValue={APIONE.workPlace}
@@ -200,26 +205,30 @@ function FormComponent({show, formName, onSubmit}) {
         inputLabel="Upload Internet Speed Screenshot*"
         message="Please go to Speedtest.net to complete this test. Here's an illustrative screenshot example"
         onChange={handleFileChange}
+        multiple
       />
-      {selectedFile && (
+      {selectedFiles.length > 0 && (
         <div className="file-list">
-          <div className='file'>
+        {selectedFiles.map((file, index) => (
+          <div className='file' key={index}>
             <div className='file-description'>
               <div className='file-details'>
                 <i className="fa-regular fa-file"></i>
                 <div className='file-properties'>
-                  <p>{selectedFile.name}</p>
-                  <p>{(selectedFile.size / 1024).toFixed(2)} kb</p>
+                  <p>{file.name}</p>
+                  <p>{(file.size / 1024).toFixed(2)} kb</p>
                 </div>
               </div>
-              <i className="fa-regular fa-trash-can" onClick={() => setSelectedFile(null)}></i>
+              <i className="fa-regular fa-trash-can" onClick={() => handleRemoveFile(index)}></i>
             </div>
             <div className='file-progress'>
               <progress id="file" max="100" value="100">100%</progress>
               <p>100%</p>
             </div>
           </div>
-        </div>)}
+        ))}
+      </div>
+        )}
           <div className='double-input'>
             <InputComponent
                 inputClass="error"

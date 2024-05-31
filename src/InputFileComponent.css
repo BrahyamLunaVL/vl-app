@@ -47,6 +47,9 @@
   color: var(--gray-2);
   font-weight: 300;
 }
+.input-file-drag-and-drop input{
+  display: none;
+}
 .file-list{
     background-color: var(--white);
     width: 100%;
